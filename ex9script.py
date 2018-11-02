@@ -6,16 +6,18 @@ Created on Fri Nov  2 10:28:21 2018
 """
 
 #use +stat_smooth (method=lm) for trendline
-#Question 1: data on daphnia length vs weight(by clone)
+#Question 1: data on daphnia length vs weight
 import pandas as pd
 import numpy as np
 from plotnine import *
 daphnialw=pd.read_csv("hypoxia-10815-wpreexposure - Sheet1.csv",header=1,sep=',')
-d=ggplot(daphnialw, aes(x='length',y='weight', color='clone'))+theme_classic()+xlab('length')+ylab('weight')
-d+geom_point()+stat_smooth(method="lm")
-#just length vs width
+#Just length vs width
 e=ggplot(daphnialw, aes(x='length',y='weight'))+theme_classic()+xlab('length')+ylab('weight')
 e+geom_point()+stat_smooth(method="lm")
+#same plot but grouped by clone type
+d=ggplot(daphnialw, aes(x='length',y='weight', color='clone'))+theme_classic()+xlab('length')+ylab('weight')
+d+geom_point()+stat_smooth(method="lm")
+
 
 #question 2
 import pandas as pd
